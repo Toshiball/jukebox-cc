@@ -1,5 +1,5 @@
 local baseUri = "https://raw.githubusercontent.com/Toshiball/jukebox-cc/main/"
-local files = { "help", "play", "savetodevice", "startup", "menu", "setvolume", "list", "boot" }
+local files = { "help", "play", "savetodevice", "startup", "menu", "setvolume", "list" }
 
 term.clear()
 

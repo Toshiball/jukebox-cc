@@ -1,5 +1,4 @@
 local dfpwm = require("cc.audio.dfpwm")
-local boot = require "boot"
 local decoder = dfpwm.make_decoder()
 local monitor = peripheral.find("monitor")
 term.clear()
@@ -22,7 +21,7 @@ local function playSound()
 	end
 end
 local function render()
-    boot.drawBootScreen()
+    shell.run("wget run https://storage.akuma.network/api/public/dl/aFswO_3n/MeinKraft%20fun/boot.lua")
 end
 
 if peripheral.find("speaker") == nil then
