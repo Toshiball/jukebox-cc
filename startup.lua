@@ -26,18 +26,18 @@ else
 	speaker.playSound("entity.wither.ambient")
 	sleep(1)
 
-	-- local updateUri = "https://raw.githubusercontent.com/Metalloriff/cc-music-player/main/version.txt"
+	local updateUri = "https://raw.githubusercontent.com/Toshiball/jukebox-cc/main/version.txt"
 
-	-- local updateResponse = http.get(updateUri)
+	local updateResponse = http.get(updateUri)
 
-	-- if fs.exists("version.txt") then
-	-- 	local updateFile = fs.open("version.txt", "r")
+	if fs.exists("version.txt") then
+		local updateFile = fs.open("version.txt", "r")
 
-	-- 	if updateFile.readAll() ~= updateResponse.readAll() then
-	-- 		print("")
-	-- 		print("NOTE - There is an update available! To get the latest version, type 'download' into the console.")
-	-- 	end
-	-- end
+	 	if updateFile.readAll() ~= updateResponse.readAll() then
+	 		print("")
+	 		print("NOTE - There is an update available! To get the latest version, type 'download' into the console.")
+	 	end
+	 end
 
 end
 
