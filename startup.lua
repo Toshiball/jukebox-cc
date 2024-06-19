@@ -1,5 +1,7 @@
 local dfpwm = require("cc.audio.dfpwm")
+local boot = require "boot"
 local decoder = dfpwm.make_decoder()
+local monitor = peripheral.find("monitor")
 term.clear()
 
 settings.define("media_center.volume", {
@@ -8,25 +10,32 @@ settings.define("media_center.volume", {
 	type = "number"
 })
 
-print("Welcome to the media center!")
-
-print("")
-
-print("BOOTING UP...")
-
-if peripheral.find("speaker") == nil then
-	print("ERR - No valid speaker was found!")
-else
+local function playSound()
+	sleep(1)
 	local speaker = peripheral.find("speaker")
-	local instr = "snare"
-
-	for chunk in io.lines("ps_1.dfpwm", 16 * 1024) do
+    for chunk in io.lines("ps_1.dfpwm", 16 * 1024) do
 		local buffer = decoder(chunk)
 
 		while not speaker.playAudio(buffer) do
 			os.pullEvent("speaker_audio_empty")
 		end
 	end
+end
+local function render()
+    boot.drawBootScreen()
+end
+
+if peripheral.find("speaker") == nil then
+	print("ERR - No valid speaker was found!")
+else
+	
+
+	if monitor then
+		parallel.waitForAll(render,playSound)
+	else
+		playSound()
+	end
+
 
 	local updateUri = "https://raw.githubusercontent.com/Toshiball/jukebox-cc/main/version.txt"
 
@@ -45,17 +54,11 @@ term.clear()
 term.setCursorPos(1, 1)
 
 print("Welcome to the media center!")
-
 print("")
-
 print("To play songs, run the 'play' command.")
-
 print("")
-
-print(
-"To save songs, they need to be converted to the DFPWMA audio format and uploaded to a static hosting site. For more information on this, enter 'help saving'.")
-
+print("To save songs, they need to be converted to the DFPWMA audio format and uploaded to a static hosting site. For more information on this, enter 'help saving'.")
 print("To see the list of song use list command")
 
 if fs.exists("download.lua") then fs.delete("download.lua") end
-if fs.exists("install.lua") then fs.delete("install.lua") end
+-- if fs.exists("install.lua") then fs.delete("install.lua") end

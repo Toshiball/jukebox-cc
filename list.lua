@@ -11,8 +11,6 @@ function list()
         print(i .. ". " .. name)
     end
 end
-list()
-
 return {
     list = list
 }
