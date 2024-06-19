@@ -98,7 +98,6 @@ end
 function play()
 	while true do
 		response = http.get(uri, nil, true)
-		-- print("response: " .. response.getResponseCode())
 
 		chunk = response.read(chunkSize)
 		while chunk ~= nil do
