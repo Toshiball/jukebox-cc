@@ -1,6 +1,5 @@
 local dfpwm = require("cc.audio.dfpwm")
 local speakers = { peripheral.find("speaker") }
-local drive = peripheral.find("drive")
 local decoder = dfpwm.make_decoder()
 
 local menu = require "menu"
@@ -98,6 +97,7 @@ end
 function play()
 	while true do
 		response = http.get(uri, nil, true)
+		-- print("response: " .. response.getResponseCode())
 
 		chunk = response.read(chunkSize)
 		while chunk ~= nil do
