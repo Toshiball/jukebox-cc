@@ -1,5 +1,5 @@
-local baseUri = ""
-local files = { "help", "play", "save", "savetodevice", "startup", "menu", "setvolume" }
+local baseUri = "https://raw.githubusercontent.com/Toshiball/jukebox-cc/main/"
+local files = { "help", "play", "savetodevice", "startup", "menu", "setvolume", "list" }
 
 term.clear()
 
@@ -13,7 +13,7 @@ for _, file in pairs(files) do
 	fileInstance.close()
 end
 
-local updateUri = "/version.txt"
+local updateUri = "https://raw.githubusercontent.com/Toshiball/jukebox-cc/main/version.txt"
 
 local updateResponse = http.get(updateUri)
 local updateFile = fs.open("version.txt", "w")
