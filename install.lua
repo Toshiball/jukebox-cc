@@ -12,6 +12,13 @@ for _, file in pairs(files) do
 	fileInstance.write(response.readAll())
 	fileInstance.close()
 end
+print("Downloading program '" .. file .. "'...")
+
+	local fileInstance = fs.open("ps_1.dfpwm", "w")
+	local response = http.get(baseUri .. "ps_1.dfpwm")
+
+	fileInstance.write(response.readAll())
+	fileInstance.close()
 
 local updateUri = "https://raw.githubusercontent.com/Toshiball/jukebox-cc/main/version.txt"
 
