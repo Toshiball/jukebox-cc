@@ -10,7 +10,7 @@ settings.define("media_center.volume", {
 })
 
 local function playSound()
-	sleep(1)
+	sleep(5)
 	local speaker = peripheral.find("speaker")
 	for chunk in io.lines("ps_1.dfpwm", 16 * 1024) do
 		local buffer = decoder(chunk)
@@ -21,7 +21,7 @@ local function playSound()
 	end
 end
 local function render()
-	shell.run("wget run https://storage.akuma.network/api/public/dl/aFswO_3n/MeinKraft%20fun/boot.lua")
+	shell.run("wget run https://storage.akuma.network/api/public/dl/TtqI2ej1/MeinKraft%20fun/boot.lua")
 end
 
 if peripheral.find("speaker") == nil then
