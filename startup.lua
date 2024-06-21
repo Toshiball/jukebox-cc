@@ -61,4 +61,4 @@ end
 
 
 if fs.exists("download.lua") then fs.delete("download.lua") end
--- if fs.exists("install.lua") then fs.delete("install.lua") end
+if fs.exists("install.lua") then fs.delete("install.lua") end
